@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Smart Farm</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/favicon.ico') }}" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+        <style>
+            label#icon {
+            margin: 0;
+            border-radius: 5px 0 0 5px;
+            }
+            input[type=text], input[type=password] {
+            width: calc(100% - 57px);
+            height: 36px;
+            margin: 13px 0 0 -5px;
+            padding-left: 10px; 
+            border-radius: 0 5px 5px 0;
+            border: solid 1px #cbc9c9; 
+            box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+            background: #fff; 
+            }
+            #icon {
+            display: inline-block;
+            padding: 9.3px 15px;
+            box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+            background: #1c87c9;
+            color: #fff;
+            text-align: center;
+            }
+            .btn-block {
+            margin-top: 10px;
+            text-align: center;
+            }
+            button {
+            width: 100%;
+            padding: 10px 0;
+            margin: 10px auto;
+            border-radius: 5px; 
+            border: none;
+            background: #1c87c9; 
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            }
+            button:hover {
+            background: #26a9e0;
+            }
+			img {
+				margin: 50px ;
+				margin-left: 300px;
+			}
+			h1{
+				text-align: center;
+			}
+            .iff{
+            margin-left: 500px;
+            }
+          </style>
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#!"><b>Smart Farm</b></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{url_for('home' )}}">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Recommandations</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Content section-->
+
+		<body>
+
+			<!-- Result -->
+			<div class="results">
+				{% if prediction=="ble" %}
+					<h1><span class='danger'>Bonjour {{nom}}, La culture la plus adéquate à cultiver est: la blé</span></h1>
+					<img class="iff" height="300" width="300" src="{{ url_for('static', filename='img/ble.jfif') }}" alt="Image">
+				{% elif prediction=="datte" %}
+                <h1><span class='danger'>Bonjour {{nom}}, La culture la plus adéquate à cultiver est: la datte</span></h1>
+                <img class="iff" height="300" width="300" src="{{ url_for('static', filename='img/datte.jpg') }}" alt="Image">
+                {% elif prediction=="argumes" %}
+                <h1><span class='danger'>Bonjour {{nom}}, La culture la plus adéquate à cultiver est: les argumes</span></h1>
+                <img class="iff" height="300" width="300" src="{{ url_for('static', filename='img/orange.jfif') }}" alt="Image">
+                {% elif prediction=="olive" %}
+                <h1><span class='danger'>Bonjour {{nom}}, La culture la plus adéquate à cultiver est: l'olive</span></h1>
+                <img class="iff" height="300" width="300" src="{{ url_for('static', filename='img/olive.jpg') }}" alt="Image">
+                {% elif prediction=="0" %}
+                <h1><span class='danger'>Bonjour {{nom}},Pas de culture trouvé.Désolé!</span></h1>
+                <img class="iff" height="300" width="300" src="{{ url_for('static', filename='img/olive.jpg') }}" alt="Image">
+                {% elif prediction[0]=="0" %}
+                <h1><span class='danger'>Bonjour {{nom}}, Nous n'avons pas pu déterminer la culture adéquate mais nous pensons que la plus probable est": {{prediction}}</span></h1>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				{% endif %}
+			</div>
+	
+			
+	
+		</body>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy;ISI  Siwar Ben Fakhta</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -1,0 +1,1 @@
+{"ble": "north,rain,winter,fertil","olive": "temp,rain,winter,fertil","datte": "temp,fertil" ,"argumes": "rain,winter,fertil" }
